@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <algorithm>
+#include <queue>
 
 using namespace std;
 
@@ -8,27 +9,28 @@ int main() {
         q = 0,
         a = 1,
         b = 1;
-    long x1, x2, y1, y2;
-    int pos[q+1] = {0};
-
+    long x1, x2, y1, y2, xi;
     scanf("%d %d", &n, &q);
-    //vector< vector<long> >charcos(n+1);
-    vector<int> Qpedidos(q+1);
-    
+    int pos[100000] = {};
+
+    queue<int> Qpedidos;
+
     for(; a <= n; a++) {
       scanf("%li %li %li %li", &x1, &y1, &x2, &y2);
-      /*
-      charcos[i].push_back(x1);
-      charcos[i].push_back(x2 - x1);
-      charcos[i].push_back(y2 - y1);
-      */
       for(b = x1; b < x2; b++) {
-          printf("Q = %d\n", b);
-          printf("Before: %d\n", pos[b]);
-          printf("Altura a adicionar: %li\n", (y2 - y1));
           pos[b] += (y2 - y1);
-          printf("After: %d\n", pos[b]);
       }
     }
+
+    for(b = q; b; b--) {
+      scanf("%li", &xi);
+      Qpedidos.push(xi);
+    }
+
+    for(b = q; b; b--) {
+      printf("%d\n", pos[Qpedidos.front()]);
+      Qpedidos.pop();
+    }
+
     return 0;
 }
