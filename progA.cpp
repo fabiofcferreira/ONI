@@ -10,26 +10,28 @@ int main() {
         t = 0;
 
     scanf("%d %d %d", &n, &b, &i);
+    b -= 1;
     char arcas[n];
     scanf(" %s", arcas);
 
     char d;
     for(; i > 0; i--) {
-        if(arcas[b-1] == 'T') {
-            arcas[b-1] = 'V';
-            t++;
-        }
-        scanf(" %c %d", &d, &p);
-
-        if(d == 'E') {
-            b -= p;
-        } else {
-            b += (p-1);
-        }
-
         if(arcas[b] == 'T') {
             arcas[b] = 'V';
             t++;
+        }
+
+        scanf(" %c %d", &d, &p);
+        while(p) {
+          if(d == 'E') b--;
+          else b++;
+
+          if(arcas[b] == 'T') {
+            arcas[b] = 'V';
+            t++;
+          }
+
+          p--;
         }
     }
     printf("%d\n", t);
