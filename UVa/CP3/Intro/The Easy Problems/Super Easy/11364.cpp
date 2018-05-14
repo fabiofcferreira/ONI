@@ -7,37 +7,23 @@ using namespace std;
 
 int main() {
     int t, n;
-    vector<int> results;
     cin >> t;
 
-    for(int i = 0; i < t; i++) {
+    for(; t; t--) {
         cin >> n;
-        vector<int> storesIndex;
 
+        int minIndex = 99, maxIndex = 0;
         for(int j = 0; j < n; j++) { // get stores index
             int temp;
             cin >> temp;
             
-            storesIndex.push_back(temp);
-        }
-        sort(storesIndex.begin(), storesIndex.end());
+            // get max distance
+            if(temp > maxIndex) maxIndex = temp;
+            if(temp < minIndex) minIndex = temp;
 
-        // car index
-        int parkedCar = floor((storesIndex[0] + storesIndex[1])/2);
-        int d = 0, j = 0, lastpos = parkedCar;
-
-        for(; j < n; j++) {
-            d += abs(storesIndex[j] - lastpos);
-            lastpos = storesIndex[j];
         }
 
-        d += abs(storesIndex[j-1] - parkedCar);
-
-        results.push_back(d);
-    }
-
-    for(int i = 0; i < t; i++) {
-        cout << results[i] << "\n";
+        cout << ((maxIndex - minIndex) * 2) << "\n";
     }
 
     return 0;
