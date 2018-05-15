@@ -7,7 +7,6 @@ int main() {
     cin >> t;
 
     for(int i = 1; i <= t; i++) {
-        //vector<int> saleries;
         int s1, s2, s3, saved;
         cin >> s1 >> s2 >> s3;
 
