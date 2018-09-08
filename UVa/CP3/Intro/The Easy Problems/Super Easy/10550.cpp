@@ -4,14 +4,15 @@
 using namespace std;
 
 int main() {
-  int initPos = 0, x = 0, y = 0, z = 0, degrees = 0;
+  int initPos, x, y, z;
 
   cin >> initPos >> x >> y >> z;
-  //cout << "Init pos: " << initPos << " X: " << x << " Y: " << y << " Z: " << z;
 
-  // turn the dial clockwise 2 full turns
-  degrees += 720;
+  while(initPos | x | y | z) {
+    cout << (1080 + (((initPos - x + 40) % 40 + (y - x + 40) % 40 + (y - z + 40) % 40) * 9)) << '\n';
 
+    cin >> initPos >> x >> y >> z;
+  }
   
   return 0;
 }
