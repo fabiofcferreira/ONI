@@ -24,7 +24,6 @@ int main() {
             juiceCost += ((calls[k] / 60) * 15) + 15;
         }
 
-
         cout << "Case " << i << ": ";
         if(mileCost < juiceCost) cout << "Mile ";
         else if(mileCost > juiceCost) cout << "Juice ";
